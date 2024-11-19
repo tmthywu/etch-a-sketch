@@ -1,6 +1,7 @@
 // set up variables
 const size = 720;
 let currentDimensions = 16;
+let interactions = 0;
 // selecting the container object
 const container = document.querySelector(".container");
 // adding button to DOM
@@ -41,8 +42,13 @@ function createGrid(dimensions) {
             row.appendChild(div);
 
             div.addEventListener('mouseover', (event) => {
-                div.style["background-color"] = 'red';
+                div.style["background-color"] = rgbToString(255 * Math.random(), 255 * Math.random(), 255 * Math.random());
+                div.style["opacity"] = ++interactions * 10 + "%";
             });
         }
     }
+}
+
+function rgbToString(r, g, b) {
+    return "rgb(" + r + ", " + g + ", " + b + ")";
 }
